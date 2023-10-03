@@ -1,0 +1,42 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Cat.cpp                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ael-maar <ael-maar@student.1337.ma>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/10/02 13:17:07 by ael-maar          #+#    #+#             */
+/*   Updated: 2023/10/02 13:57:08 by ael-maar         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "Cat.hpp"
+
+// Implementation of the default constructor
+Cat::Cat(): Animal("Cat") { std::cout << "Default constructor of Cat called" << std::endl; }
+
+// Implementation of the parameterized constructor
+Cat::Cat(const std::string &type): Animal(type) { std::cout << "Parameterized constructor of Cat called" << std::endl; }
+
+// Implementation of the copy constructor
+Cat::Cat(Cat const &old_obj) {
+    this->type = old_obj.type;
+    std::cout << "Copy constructor of Cat called" << std::endl;
+}
+
+// Implementation of the copy assignment operator
+Cat &Cat::operator=(Cat const &other) {
+    if (this != &other)
+        this->type = other.type;
+    std::cout << "Copy assignment operator of Cat called" << std::endl;
+    return (*this);
+}
+
+// Implementation of the destructor
+Cat::~Cat() { std::cout << "Destructor of Cat called" << std::endl; }
+
+// Implemenatation of the getType()
+const std::string &Cat::getType() const { return (type); }
+
+// Implementation of the virtual function makeSound()
+void    Cat::makeSound() const { std::cout << "Cat make sound" << std::endl; }
