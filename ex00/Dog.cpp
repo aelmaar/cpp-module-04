@@ -6,7 +6,7 @@
 /*   By: ael-maar <ael-maar@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 13:17:11 by ael-maar          #+#    #+#             */
-/*   Updated: 2023/10/02 13:57:46 by ael-maar         ###   ########.fr       */
+/*   Updated: 2023/10/03 11:26:36 by ael-maar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,14 @@ Dog::Dog(): Animal("Dog") { std::cout << "Default constructor of Dog called" << 
 Dog::Dog(const std::string &type): Animal(type) { std::cout << "Parameterized constructor of Dog called" << std::endl; }
 
 // Implementation of the copy constructor
-Dog::Dog(Dog const &old_obj) {
-    this->type = old_obj.type;
+Dog::Dog(Dog const &old_obj): Animal(old_obj) {
     std::cout << "Copy constructor of Dog called" << std::endl;
 }
 
 // Implementation of the copy assignment operator
 Dog &Dog::operator=(Dog const &other) {
     if (this != &other)
-        this->type = other.type;
+        Animal::operator=(other);
     std::cout << "Copy assignment operator of Dog called" << std::endl;
     return (*this);
 }
