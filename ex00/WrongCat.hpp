@@ -1,28 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.hpp                                            :+:      :+:    :+:   */
+/*   WrongCat.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ael-maar <ael-maar@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 13:17:09 by ael-maar          #+#    #+#             */
-/*   Updated: 2023/10/02 14:02:23 by ael-maar         ###   ########.fr       */
+/*   Updated: 2023/10/03 10:41:33 by ael-maar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CAT_HPP
-# define CAT_HPP
+#ifndef WRONGCAT_HPP
+# define WRONGCAT_HPP
 
-#include "Animal.hpp"
+#include "WrongAnimal.hpp"
 
-class Cat: public Animal
+class WrongCat: public WrongAnimal
 {
     public:
-        Cat();
-        Cat(const std::string &type);
-        Cat(Cat const &old_obj);
-        Cat &operator=(Cat const &other);
-        virtual ~Cat();
+        WrongCat();
+        WrongCat(const std::string &type);
+        WrongCat(WrongCat const &old_obj);
+        WrongCat &operator=(WrongCat const &other);
+        ~WrongCat();
         const std::string &getType() const;
         void makeSound() const;
 };
