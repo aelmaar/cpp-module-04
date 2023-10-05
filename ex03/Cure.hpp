@@ -6,7 +6,7 @@
 /*   By: ael-maar <ael-maar@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 13:07:30 by ael-maar          #+#    #+#             */
-/*   Updated: 2023/10/04 13:34:22 by ael-maar         ###   ########.fr       */
+/*   Updated: 2023/10/05 13:24:56 by ael-maar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ class Cure: public AMateria
         Cure &operator=(Cure const &other);
         ~Cure();
         AMateria *clone() const;
+        void use(ICharacter& target);
 };
 
 #endif

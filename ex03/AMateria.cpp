@@ -6,7 +6,7 @@
 /*   By: ael-maar <ael-maar@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 12:46:42 by ael-maar          #+#    #+#             */
-/*   Updated: 2023/10/03 12:58:13 by ael-maar         ###   ########.fr       */
+/*   Updated: 2023/10/05 16:44:52 by ael-maar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,3 +35,6 @@ AMateria::~AMateria() {}
 
 // Implementation of the getType()
 const std::string &AMateria::getType() const { return (type); }
+
+// Implementation of the use()
+void AMateria::use(ICharacter& target) { (void)target; }
