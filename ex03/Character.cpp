@@ -6,7 +6,7 @@
 /*   By: ael-maar <ael-maar@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 13:43:47 by ael-maar          #+#    #+#             */
-/*   Updated: 2023/10/05 17:35:45 by ael-maar         ###   ########.fr       */
+/*   Updated: 2023/10/05 17:46:54 by ael-maar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,10 +72,13 @@ void Character::unequip(int idx) {(void)idx;}
 
 // Implementation of the use()
 void Character::use(int idx, ICharacter& target) {
-    if (idx < 0 || idx > 4)
+    if (idx < 0 || idx > 3)
     {
         std::cerr << "The index is out of range" << std::endl;
         exit(EXIT_FAILURE);
     }
-    materias[idx]->use(target);
+    if (materias[idx] != NULL)
+        materias[idx]->use(target);
+    else
+        std::cerr << "Inventory slot is empty" << std::endl;
 }

@@ -6,7 +6,7 @@
 /*   By: ael-maar <ael-maar@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 12:37:53 by ael-maar          #+#    #+#             */
-/*   Updated: 2023/10/05 17:09:33 by ael-maar         ###   ########.fr       */
+/*   Updated: 2023/10/05 17:45:48 by ael-maar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ int main(void)
 
     me->use(0, *bob);
     me->use(1, *bob);
+    me->use(3, *bob);
 
     delete bob;
     delete me;
