@@ -6,7 +6,7 @@
 /*   By: ael-maar <ael-maar@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 12:37:53 by ael-maar          #+#    #+#             */
-/*   Updated: 2023/10/05 17:45:48 by ael-maar         ###   ########.fr       */
+/*   Updated: 2023/10/07 15:13:05 by ael-maar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,16 +29,33 @@ int main(void)
     me->equip(tmp);
     tmp = src->createMateria("cure");
     me->equip(tmp);
+    tmp = src->createMateria("ice");
+    me->equip(tmp);
+    tmp = src->createMateria("cure");
+    me->equip(tmp);
+    tmp = src->createMateria("ice"); // Inventory is full
+    me->equip(tmp);
+    tmp = src->createMateria("Cure"); // Materia type doesn't match
+    if (tmp)
+        me->equip(tmp);
+
+    me->unequip(3);
+    me->unequip(3); // Empty slot to unequip
+    me->unequip(4); // Slot doesn't exist
 
     ICharacter* bob = new Character("bob");
 
     me->use(0, *bob);
     me->use(1, *bob);
-    me->use(3, *bob);
+    me->use(4, *bob); // Slot doesn't exist
+
+    bob->use(2, *bob); // Empty slots
+    bob->use(3, *bob); // Empty slots
 
     delete bob;
     delete me;
     delete src;
 
+    while (1);
     return 0;
 }

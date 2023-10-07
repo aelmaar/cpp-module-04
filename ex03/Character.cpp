@@ -6,7 +6,7 @@
 /*   By: ael-maar <ael-maar@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 13:43:47 by ael-maar          #+#    #+#             */
-/*   Updated: 2023/10/05 17:46:54 by ael-maar         ###   ########.fr       */
+/*   Updated: 2023/10/06 19:56:34 by ael-maar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,20 +15,20 @@
 // Implementation of the default constructor
 Character::Character() {
     for (int i = 0; i < INVENTORY; i++)
-        materias[i] = NULL;
+        equipped_materias[i] = NULL;
 }
 
 // Implementation of the copy constructor
 Character::Character(Character const &old_obj) {
     for (int i = 0; i < INVENTORY; i++)
-        this->materias[i] = old_obj.materias[i];
+        this->equipped_materias[i] = old_obj.equipped_materias[i];
     this->name = old_obj.name;
 }
 
 // Implementation of the parameterized constructor
 Character::Character(const std::string &name): name(name) {
     for (int i = 0; i < INVENTORY; i++)
-        materias[i] = NULL;
+        equipped_materias[i] = NULL;
 }
 
 // Implementation of the copy assignment operator
@@ -37,8 +37,8 @@ Character &Character::operator=(Character const &other) {
     {
         for (int i = 0; i < INVENTORY; i++)
         {
-            delete materias[i];
-            materias[i] = other.materias[i];
+            delete equipped_materias[i];
+            equipped_materias[i] = other.equipped_materias[i];
         }
     }
     return (*this);
@@ -47,7 +47,7 @@ Character &Character::operator=(Character const &other) {
 // Implementation of the destructor
 Character::~Character() {
     for (int i = 0; i < INVENTORY; i++)
-        delete materias[i];
+        delete equipped_materias[i];
 }
 
 // Implementation of the getName()
@@ -55,30 +55,42 @@ std::string const & Character::getName() const { return (name); }
 
 // Implementation of the equip()
 void Character::equip(AMateria* m) {
-    if (m == NULL)
-        exit(EXIT_FAILURE);
     for (int i = 0; i < INVENTORY; i++)
     {
-        if (materias[i] == NULL)
+        if (equipped_materias[i] == NULL)
         {
-            materias[i] = m;
+            equipped_materias[i] = m;
             return ;
         }
     }
+    std::cerr << "Inventory is full" << std::endl;
 }
 
 // Implementation of the unequip()
-void Character::unequip(int idx) {(void)idx;}
+void Character::unequip(int idx) {
+    if (idx < 0 || idx > 3)
+    {
+        std::cerr << "The slot doesn't exist, please choose from 0 to 3" << std::endl;
+        return;
+    }
+    if (equipped_materias[idx] != NULL)
+    {
+        materia_trash.append(equipped_materias[idx]);
+        equipped_materias[idx] = NULL;
+    }
+    else
+        std::cerr << "Inventory slot is empty" << std::endl;
+}
 
 // Implementation of the use()
 void Character::use(int idx, ICharacter& target) {
     if (idx < 0 || idx > 3)
     {
-        std::cerr << "The index is out of range" << std::endl;
-        exit(EXIT_FAILURE);
+        std::cerr << "The slot doesn't exist, please choose from 0 to 3" << std::endl;
+        return;
     }
-    if (materias[idx] != NULL)
-        materias[idx]->use(target);
+    if (equipped_materias[idx] != NULL)
+        equipped_materias[idx]->use(target);
     else
         std::cerr << "Inventory slot is empty" << std::endl;
 }

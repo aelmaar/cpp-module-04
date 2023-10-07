@@ -6,7 +6,7 @@
 /*   By: ael-maar <ael-maar@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 17:32:37 by ael-maar          #+#    #+#             */
-/*   Updated: 2023/10/05 17:21:07 by ael-maar         ###   ########.fr       */
+/*   Updated: 2023/10/06 19:38:58 by ael-maar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,5 +62,6 @@ AMateria* MateriaSource::createMateria(std::string const & type) {
         if (materias[i] != NULL && materias[i]->getType() == type)
             return (materias[i]->clone());
     }
+    std::cerr << "Can't create materia, The materia type doesn't exist" << std::endl;
     return (NULL);
 }
